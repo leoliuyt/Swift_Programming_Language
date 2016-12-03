@@ -19,7 +19,7 @@ class Apartment {
     init(unit: String) {
         self.unit = unit
     }
-    var tenant: Person?
+    weak var tenant: Person?
     deinit {
         print("Apartment \(unit) is being deinitialized")
     }
@@ -47,4 +47,9 @@ john?.apartment = unit4A
 unit4A?.tenant = john
 
 john = nil
-unit4A = nil
+//unit4A = nil
+if let a = unit4A?.tenant {
+    print("\(a.name) tenant != nil")
+} else {
+    print("tenant == nil")
+}
